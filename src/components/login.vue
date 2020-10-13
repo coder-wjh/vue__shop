@@ -32,6 +32,8 @@
 </template>
 
 <script>
+import {getloginForm} from "../network/home/loginForm.js"
+
 export default {
   name: 'login',
   data(){
@@ -64,26 +66,28 @@ export default {
     login(){
       this.$refs.loginFormRef.validate((valid) => {
         if(!valid) return;
-        const result = this.$http.post('login',this.loginForm)
+        
+        getloginForm(this.loginForm.username,this.loginForm.password)
         .then((result) => {
-          const data = result.data
+          console.log(result);
           
-          if(data.meta.status !== 200){
+          if(result.meta.status !== 200){
             return this.$message.error("用户名或密码错误");
           }else{
             this.$message.success("登录成功");
 
+
             // 1.登录成功后token要保存到客户端的sessionStorage中
                 // 1.1 项目中出了登录之外的其他API接口，必须在登录后才能访问
                 // 1.2 token 只应在当前网站打开期间生效，所以将token保存在sessionStorage中
-            window.sessionStorage.setItem('token',data.data.token)
+            window.sessionStorage.setItem('token',result.data.token);
 
             // 2.通过编程式导航跳转到后代主页，路由地址是 /home
             // 使用延时时，防止setTimeout中this的指向改变
             const a = this
             setTimeout(function(){
               a.$router.push('/home')
-            },1500)
+            },1000)
             
           }
         })
