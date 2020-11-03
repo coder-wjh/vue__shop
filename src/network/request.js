@@ -4,6 +4,7 @@ import axios from 'axios'
 export function request(config) {
   // 1.创建axios实例
   const instance = axios.create({
+    // http://119.23.53.78:8888/api/private/v1
     baseURL: 'http://127.0.0.1:8888/api/private/v1',
     timeout: 5000
   })
