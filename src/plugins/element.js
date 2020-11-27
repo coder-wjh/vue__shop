@@ -10,7 +10,8 @@ import {Menu,Submenu,MenuItemGroup,MenuItem} from 'element-ui'
 import {Breadcrumb,BreadcrumbItem,Card,Row,
   Col,Table,TableColumn,Switch,Tooltip,
   Pagination,Dialog,MessageBox,Tag,Tree,
-  Select,Option,Cascader,Alert,Tabs,TabPane} from 'element-ui'
+  Select,Option,Cascader,Alert,Tabs,TabPane,
+  Steps,Step,CheckboxGroup,Checkbox,Upload} from 'element-ui'
 
 Vue.use(Button)
 Vue.use(Form)
@@ -48,3 +49,8 @@ Vue.use(Cascader)
 Vue.use(Alert)
 Vue.use(Tabs)
 Vue.use(TabPane)
+Vue.use(Steps)
+Vue.use(Step)
+Vue.use(Checkbox)
+Vue.use(CheckboxGroup)
+Vue.use(Upload)
